@@ -21,24 +21,24 @@ class Main {
     double currentBalance = initialBalance;
     
     do{
-      
-    }while(Math.abs(currentBalance) > marginOfError);
-    for(int i = 0; i < numMonths; i++){
-      currentBalance *= Math.pow(1+intrestRate, 1.0/12);
-      currentBalance -= paymentToTry;
-    }
-    if(Math.abs(currentBalance) > marginOfError){
-      if(currentBalance < 0){
-        maxPayment = paymentToTry;
-        paymentToTry = (maxPayment + minPayment) / 2;
+      currentBalance = initialBalance;
+      for(int i = 0; i < numMonths; i++){
+        currentBalance *= Math.pow(1+intrestRate, 1.0/12);
+        currentBalance -= paymentToTry;
       }
-      else{
-        minPayment = paymentToTry;
-        paymentToTry = (maxPayment + minPayment) / 2;
-      }while(Math.abs(currentBalance)> marginOfError);
+      if(Math.abs(currentBalance) > marginOfError){
+        if(currentBalance < 0){
+          maxPayment = paymentToTry;
+          paymentToTry = (maxPayment + minPayment) / 2;
+        }
+        else{
+          minPayment = paymentToTry;
+          paymentToTry = (maxPayment + minPayment) / 2;
+        }
+      }
+    }while(Math.abs(currentBalance) > marginOfError);
 
-      System.out.println(paymentToTry);
-    }
+    System.out.println(paymentToTry);
     
   }
 }
