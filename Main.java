@@ -35,7 +35,9 @@ class Main {
       else{
         minPayment = paymentToTry;
         paymentToTry = (maxPayment + minPayment) / 2;
-      }
+      }while(Math.abs(currentBalance)> marginOfError);
+
+      System.out.println(paymentToTry);
     }
     
   }
